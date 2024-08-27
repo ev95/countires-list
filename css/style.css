@@ -152,7 +152,13 @@ nav ul li a:hover {
     background-color: transparent;
 }
 
-.pagination-container > button:hover{
+.pagination-container > button.active {
+    color: #8dc0ff;
+    border: 3px solid #8dc0ff;
+    font-weight: 900;
+}
+
+.pagination-container > button:hover {
     -webkit-box-shadow: 5px 5px 13px 3px rgba(219,219,219,1);
     -moz-box-shadow: 5px 5px 13px 3px rgba(219,219,219,1);
     box-shadow: 5px 5px 13px 3px rgba(219,219,219,1);

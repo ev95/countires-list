@@ -26,7 +26,7 @@ async function searchCountries(s_text){
 
 // Drow countries html
 function drowCountries(page_number, s_countries) {
-    countries_list.innerHTML = '';
+    countries_list.textContent = '';
     let countries = [];
 
     if(s_countries) {
@@ -64,6 +64,8 @@ function createPagination(countries) {
     const pages_count = calculatePageCount();
     for(let i = 0; i < pages_count; i++){
         const button = document.createElement('button');
+        if(i == 0) button.classList.add('active');
+        
         button.textContent = i + 1;
 
         pagination_container.append(button);
@@ -77,9 +79,19 @@ function createPagination(countries) {
 
 // Add pagination functionality
 pagination_container.addEventListener('click', (e) => {
-    if(!e.target.classList.contains('pagination-container')){
+    if(e.target.localName === 'button'){
         const page = e.target.textContent;
         drowCountries(+page, '');
+
+        // add active page class
+        const parent = e.target.parentNode;
+        const childrens = parent.children;
+        for( let i= 0; i < childrens.length; i++){ 
+            if(childrens[i].classList.contains('active')){
+                childrens[i].classList.remove('active');
+            }
+        }
+        e.target.classList.add('active');
     }
 });
 
