@@ -10,8 +10,8 @@ const search_input = document.getElementById('search-input');
 async function getCountries(){
     const response = await fetch(`${baseURL}all`);
     const countries = await response.json();
-    drowCountries(1, '');
     createPagination(countries);
+    drowCountries(1, '');
 }
 getCountries();
 
